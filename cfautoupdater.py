@@ -15,7 +15,7 @@ headers = {
     "content-type": "application/json"
     }
 
-# This is where you would put the ID of your DNS record you want to monitor
+# Getting the initial data of your A Record
 a_record_url = requests.get(f"https://api.cloudflare.com/client/v4/zones/{zone_id}/dns_records/{record_id}", headers=headers)
 arecordjson = a_record_url.json()
 
