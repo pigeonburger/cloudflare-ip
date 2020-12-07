@@ -20,7 +20,7 @@ Be aware, this only works if your site is on Cloudflare, AND you have direct acc
 
 On your web server, in any directory, clone this repository:
 
-        git clone https://github.com/pygeonburger/cf-auto-ip-updater/
+    git clone https://github.com/pygeonburger/cf-auto-ip-updater/
         
 Then, create a file called `cfauth.ini` and set it up like so:
 
