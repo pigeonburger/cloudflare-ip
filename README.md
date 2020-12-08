@@ -2,7 +2,7 @@
 
 This is a script I made that will automatically update my A record's IP address whenever my web server's IP changes.
 
-I don't have (nor can I afford) a static ip, meaning that my IP address constantly changes. Whenever it <i>does</i> change (usually while I'm sleeping), it means that my site becomes completely inaccessible. So, I attempted to create a solution, which is this script.
+I don't have (nor can I afford) a static ip, meaning that my IP address constantly changes. Whenever it <i>does</i> change (usually while I'm sleeping), it means that my site becomes completely inaccessible. So, I attempted to create a solution, which is this script. It can also send you an email to let you know it's been updated.
 
 Be aware, this only works if your site is on Cloudflare, AND you have direct access to the web server (root permissions are not required). See the requirements below:
 
@@ -16,6 +16,12 @@ Be aware, this only works if your site is on Cloudflare, AND you have direct acc
   - Need to know your zone ID
   - You'll also need to know the ID of the A record you want to change
   
+  
+<h2>Optional:</h2>
+
+  - SMTP email, to send an update when the IP changes
+  
+ 
 <h2>Installation:</h2>
 
 On your web server, in any directory, clone this repository:
