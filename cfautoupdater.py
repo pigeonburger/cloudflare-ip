@@ -1,4 +1,4 @@
-import requests, time, json, configparser
+import requests, time, json, configparser, smtplib
 
 # Reading the keys from the cfauth.ini file
 config = configparser.ConfigParser()
