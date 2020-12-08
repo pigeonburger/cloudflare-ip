@@ -28,7 +28,7 @@ On your web server, in any directory, clone this repository:
 
     git clone https://github.com/pygeonburger/cf-auto-ip-updater/
         
-Then, create a file called `cfauth.ini` and set it up like so:
+Then, create a file called `cfauth.ini` in that cloned folder and set it up like so:
 
     [tokens]
     zone_id=<YOUR_ZONE_ID>
