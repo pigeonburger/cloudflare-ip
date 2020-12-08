@@ -36,7 +36,7 @@ while currentactualip == current_set_ip:
 else: # If your live IP is NOT the same as the A Record's IP
     pass
 
-# Just getting your live IP again (can probs get rid of this as we have it in the loop, but who cares) 
+# Just getting your live IP again (can probs get rid of this as we have it in the loop, but ipify doesn't have rate limits so I can use it as much as I damn want to) 
 currentactualip = requests.get('https://api.ipify.org').text
 
 # The "Payload" is what we want to change in the DNS record JSON (in this case, it's our IP)
