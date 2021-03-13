@@ -1,4 +1,4 @@
-import requests, time, json, configparser, smtplib
+import requests, time, json, configparser, smtplib, logging, datetime
 
 # Reading the keys from the cfauth.ini file
 config = configparser.ConfigParser()
@@ -7,6 +7,9 @@ config.read('cfauth.ini')
 zone_id = config.get('tokens', 'zone_id')
 bearer_token = config.get('tokens', 'bearer_token')
 record_id = config.get('tokens', 'record_id')
+
+# Setting up the logger (a file where it records all IP changes)
+logging.basicConfig(level=logging.INFO, filename='ipchanges.log', format='%(levelname)s :: %(message)s')
 
 # The headers we want to use
 headers = {
@@ -58,6 +61,12 @@ while True:
 
     # Change the IP using a PATCH request
     requests.patch(f"https://api.cloudflare.com/client/v4/zones/{zone_id}/dns_records/{record_id}", headers=headers, data=json.dumps(payload))
+    
+    # Get the time of the IP change
+    now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+    # LOG THE CHANGE
+    logging.info(f"{now} - IP change from {current_set_ip} to {currentactualip}")
 
 
     # Sends an email to you to let you know everything has been updated.
