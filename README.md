@@ -29,4 +29,6 @@ On your web server, in any directory, clone this repository:
         
 Then, open the file `cfauth.ini` in that folder and replace `<YOUR_ZONE_ID>` with your actual Cloudflare Zone ID, `<YOUR_BEARER_TOKEN>` with your API bearer token and `<YOUR_DNS_RECORD_ID>` with the ID of the DNS record you want to change.
 
+If you want email support, add your SMTP details, otherwise just delete everything at the bottom of the script.
+
 Then, if you've done everything, run the `cfautoupdater.py` file!
