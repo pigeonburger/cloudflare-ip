@@ -25,7 +25,7 @@ Be aware, this only works if your site is on the Cloudflare CDN. See the require
 
 On your web server, in any directory, clone this repository:
 
-    git clone https://github.com/pygeonburger/cloudflare-ip/
+    git clone https://github.com/pigeonburger/cloudflare-ip/
         
 Then, open the file `cfauth.ini` in that folder and replace `<YOUR_ZONE_ID>` with your actual Cloudflare Zone ID, `<YOUR_BEARER_TOKEN>` with your API bearer token and `<YOUR_DNS_RECORD_ID>` with the ID of the DNS record you want to change.
 
