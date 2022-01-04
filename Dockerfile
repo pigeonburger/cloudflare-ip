@@ -4,7 +4,7 @@ RUN apk add --update apk-cron && rm -rf /var/cache/apk/*
 
 RUN pip install requests
 
-ADD /opt/cloudflare-ip/cfauth.ini /
+ADD ./cfauth.ini /
 
 ADD https://raw.githubusercontent.com/Daru-0/cloudflare-ip/main/cfautoupdater.py /
 
