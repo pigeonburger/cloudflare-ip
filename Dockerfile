@@ -2,7 +2,7 @@ FROM python:3.6-alpine3.15
 
 RUN apk add --update apk-cron && rm -rf /var/cache/apk/*
 
-RUN 'pip3 install requests'
+RUN 'pip install requests'
 
 ADD /opt/cloudflare-ip/cfauth.ini /
 
