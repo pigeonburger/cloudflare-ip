@@ -1,3 +1,5 @@
+#! /usr/bin/python
+
 import requests, time, json, configparser, smtplib, logging, datetime
 
 # Reading the keys from the cfauth.ini file
@@ -72,21 +74,21 @@ while True:
     # Sends an email to you to let you know everything has been updated.
     # If you don't want this, just delete everything below this comment.
 
-    sender = 'sender@google.com'
-    receivers = ['receiver@example.com']
+    # sender = 'sender@google.com'
+    # receivers = ['receiver@example.com']
 
-    message = f"""From: Server <sender@google.com>
-    To: Your email <receiver@example.com>
-    Subject: DNS IP Updated
+    # message = f"""From: Server <sender@google.com>
+    # To: Your email <receiver@example.com>
+    # Subject: DNS IP Updated
 
-    The server's IP has changed from {current_set_ip} to {currentactualip}.
+    # The server's IP has changed from {current_set_ip} to {currentactualip}.
 
-    The DNS records have been updated.
-    """
+    # The DNS records have been updated.
+    # """
 
-    smtpObj = smtplib.SMTP('smtp.example.com', port=587)
-    smtpObj.connect("smtp.example.com", port=587)
-    smtpObj.ehlo()
-    smtpObj.starttls()
-    smtpObj.login("username", "password")
-    smtpObj.sendmail(sender, receivers, message)
+    # smtpObj = smtplib.SMTP('smtp.example.com', port=587)
+    # smtpObj.connect("smtp.example.com", port=587)
+    # smtpObj.ehlo()
+    # smtpObj.starttls()
+    # smtpObj.login("username", "password")
+    # smtpObj.sendmail(sender, receivers, message)
