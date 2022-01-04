@@ -1,17 +1,17 @@
 FROM python:3.6-alpine3.15
 
-RUN apk add --update apk-cron && rm -rf /var/cache/apk/*
+ENV APP_PATH=/usr/src/app
 
-RUN pip install requests
+WORKDIR ${APP_PATH}
 
-ADD ./cfauth.ini /
+RUN pip3 install requests
 
-ADD https://raw.githubusercontent.com/Daru-0/cloudflare-ip/main/cfautoupdater.py /
+ENV ZONE_ID=""
+ENV BEARER_TOKEN=""
+ENV RECORD_ID=""
 
-ADD https://raw.githubusercontent.com/Daru-0/cloudflare-ip/main/entry.sh /
+ADD https://raw.githubusercontent.com/Daru-0/cloudflare-ip/main/cfautoupdater.py ./cfautoupdater.py
 
-RUN chmod +x /cfautoupdater.py /entry.sh
+ADD https://raw.githubusercontent.com/Daru-0/cloudflare-ip/main/entrypoint.sh ./entrypoint.sh
 
-RUN cfautoupdater.py
-
-CMD ["/entry.sh"]
+ENTRYPOINT ${APP_PATH}/entrypoint.sh
