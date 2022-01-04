@@ -12,6 +12,6 @@ ADD https://raw.githubusercontent.com/Daru-0/cloudflare-ip/main/entry.sh /
 
 RUN chmod +x /cfautoupdater.py /entry.sh
 
-RUN /cfautoupdater.py
+RUN cfautoupdater.py
 
 CMD ["/entry.sh"]
