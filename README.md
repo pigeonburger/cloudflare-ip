@@ -25,7 +25,7 @@ Be aware, this only works if your site is on the Cloudflare CDN. See the require
       -e BEARER_TOKEN=<YOUR_BEARER_TOKEN> \
       -e RECORD_ID=<YOUR_DNS_RECORD_ID> \
       -e ZONE_ID=<YOUR_ZONE_ID> \
-      daruzero/cfautoupdater:1.1
+      daruzero/cfautoupdater:latest
 
 </br>
 
