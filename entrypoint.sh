@@ -50,9 +50,9 @@ main() {
     fi
 
     echo ""
-    echo "Everything ok!"
+    echo "[INFO] - Everything ok!"
     echo ""
-    echo "Starting script"
+    echo "[INFO] - Starting script"
     exec python /cfautoupdater.py
 }
 
