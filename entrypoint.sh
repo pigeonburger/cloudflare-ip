@@ -1,62 +1,59 @@
 #!/bin/sh
 
 main() {
-  set -e
+    set -e
 
-  echo "Now in entrypoint for CloudFlare DNS Auto Updater"
-  echo "Script        1.1.0 (2022-01-04)"
-  echo "User:         '$(whoami)'"
-  echo "Group:        '$(id -g -n)'"
-  echo "Working dir:  '$(pwd)'"
-  echo ""
+    echo "Now in entrypoint for CloudFlare DNS Auto Updater"
+    echo "Author:        Daru-0"
+    echo "Created:       2022-01-19"
+    echo "Started:       $(date '+%F %T')"
+    echo ""
 
-  echo "Inspecting enviroment variables"
-  echo ""
+    echo "[INFO] - Inspecting enviroment variables"
+    echo ""
 
-  if [ -z "$ZONE_ID" ]; then
-      cat >&2 <<EOF
-ZONE_ID is empty
-EOF
-      exit 1
-  else
-      echo "ZONE_ID ok"
-  fi
+    if [ -z "$ZONE_ID" ]; then
+        echo "[ERROR] - ZONE_ID is empty"
+        exit 1
+    else
+        echo "[INFO] - ZONE_ID ok"
+    fi
 
-  if [ -z "$BEARER_TOKEN" ]; then
-      cat >&2 <<EOF
-BEARER_TOKEN is empty
-EOF
-      exit 1
-  else
-      echo "BEARER_TOKEN ok"
-  fi
+    if [ -z "$EMAIL" ]; then
+        echo "[ERROR] - EMAIL is empty"
+        exit 1
+    else
+        echo "[INFO] - EMAIL ok"
+    fi
 
-  if [ -z "$RECORD_ID" ]; then
-      cat >&2 <<EOF
-  RECORD_ID is empty
-  EOF
-      exit 1
-  else
-      echo "RECORD_ID ok"
-  fi
+    if [ -z "$AUTH_KEY" ]; then
+        echo "[ERROR] - AUTH_KEY is empty"
+        exit 1
+    else
+        echo "[INFO] - AUTH_KEY ok"
+    fi
 
-  echo ""
-  echo "Everything ok!"
-  echo ""
+    if [ -z "$RECORD_ID" ]; then
+        echo "[ERROR] - RECORD_ID is empty"
+        exit 1
+    elif expr "$RECORD_ID" : 'none' >/dev/null; then
+        echo "[INFO] - RECORD_ID set to none. The script will check all the A records"
+    else
+        echo "[INFO] - RECORD_ID ok"
+    fi
 
-  echo "Touching cfauth.ini"
-  touch $APP_PATH/cfauth.ini
+    if expr "$CHECK_INTERVAL" : '[0-9]*$' >/dev/null; then
+        echo "[INFO] - CHECK_INTERVAL ok"
+    else
+        echo "[ERROR] - CHECK_INTERVAL must be a positive integer"
+        exit 1
+    fi
 
-  echo "Writing cfauth.ini"
-  echo "[tokens]" >> $APP_PATH/cfauth.ini
-  echo "zone_id=$ZONE_ID" >> $APP_PATH/cfauth.ini
-  echo "bearer_token=$BEARER_TOKEN" >> $APP_PATH/cfauth.ini
-  echo "record_id=${RECORD_ID}" >> $APP_PATH/cfauth.ini
-  echo "Done!"
-
-  echo ""
-  echo "Starting script"
-  exec python $APP_PATH/cfautoupdater.py
+    echo ""
+    echo "Everything ok!"
+    echo ""
+    echo "Starting script"
+    exec python /cfautoupdater.py
 }
 
 main $@
