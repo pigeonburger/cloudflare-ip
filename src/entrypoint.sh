@@ -4,7 +4,7 @@ main() {
     set -e
 
     echo "Now in entrypoint for CloudFlare DNS Auto Updater"
-    echo "Author:        Daru-0"
+    echo "Author:        DaruZero"
     echo "Created:       2022-01-19"
     echo "Started:       $(date '+%F %T')"
     echo ""
@@ -53,7 +53,7 @@ main() {
     echo "[INFO] - Everything ok!"
     echo ""
     echo "[INFO] - Starting script"
-    exec python /cfautoupdater.py
+    exec python ./cfautoupdater.py
 }
 
 main $@
