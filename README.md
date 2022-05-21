@@ -7,7 +7,7 @@ The entrypoint will check if the environment variables have been correctly input
 
 The script will check the public IP every 24 hours and automatically update one (or all) of the A records' IP address if they are different.
 
-Be aware, this only works if your site is on the Cloudflare CDN.
+Be aware, this only works if your content is on the Cloudflare CDN.
 
 ## Requirements:
 
@@ -38,8 +38,8 @@ docker run -d \
 </br>
 
 ## Future implementation
-- ✓ Add possibility to choose the amount of time between public IP's checks
-- ✓ Add possibility to change more than one A record
-- ✓ Check ENV validity in entrypoint.sh
-- Add possibility to log changes via mail
-- Easy standalone script that can run without a container
+- [x] Add possibility to choose the amount of time between public IP's checks
+- [x] Add possibility to change more than one A record
+- [x] Check ENV validity in entrypoint.sh
+- [ ] Add possibility to log changes via mail
+- [ ] Easy standalone script that can run without a container
