@@ -9,7 +9,7 @@ RUN pip3 install requests yagmail
 ENV ZONE_ID="" \
     EMAIL="" \
     AUTH_KEY="" \
-    RECORD_ID="none" \
+    RECORD_ID="" \
     CHECK_INTERVAL=86400 \
     SENDER_ADDRESS="" \
     SENDER_PASSWORD="" \
