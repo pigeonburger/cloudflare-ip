@@ -1,6 +1,5 @@
 # Cloudflare DNS Auto IP Updater
 
-
 This is a fork of the script [pigeonburger/cloudflare-ip](https://github.com/pigeonburger/cloudflare-ip). I added a Dockerfile to run the script inside an alpine container, which is very lightweight.
 
 The entrypoint will check if the environment variables have been correctly inputted.
@@ -11,11 +10,11 @@ Be aware, this only works if your content is on the Cloudflare CDN.
 
 ## Requirements:
 
-  - A CloudFlare account
-  - Cloudflare Global API Key
-  - ID of the Zone you want to change a record of
-  - (optional) The ID of the A record you want to change ([how to](https://api.cloudflare.com/#dns-records-for-a-zone-list-dns-records))
-  
+- A CloudFlare account
+- Cloudflare Global API Key
+- ID of the Zone you want to change a record of
+- (optional) The ID of the A record you want to change ([how to](https://api.cloudflare.com/#dns-records-for-a-zone-list-dns-records))
+
 </br>
 
 ## Installation:
@@ -27,19 +26,27 @@ docker run -d \
   -e ZONE_ID=<YOUR_ZONE_ID> \
   daruzero/cfautoupdater:latest
 ```
+
 ### Enviroment variables:
 
 (required) `ZONE_ID`: The ID of the zone you want to change a record of  
 (required) `EMAIL`: Email used for the CloudFlare registration  
 (required) `AUTH_KEY`: Your CloudFlare Global API Key  
 (optional) `RECORD_ID`: The ID of the record you want to change. Insert "none" to update all the A record of the zone (this is the default if not set)  
-(optional) `CHECK_INTERVAL`: The amount of seconds the script should wait between checks (default 86400)  
+(optional) `CHECK_INTERVAL`: The amount of seconds the script should wait between checks (default 86400)
+
+#### If you want to receieve a notification via email use these:
+
+(optional) `SENDER_ADDRESS`: The address of the email sender. Must be a Gmail address  
+(optional) `SENDER_PASSWORD`: The password to authenticate the sender. Use an application password ([tutorial](https://support.google.com/accounts/answer/185833?hl=en))  
+(optional) `RECEIVER_ADDRESS`: The address of the email receiver. Must be a Gmail address
 
 </br>
 
 ## Future implementation
+
 - [x] Add possibility to choose the amount of time between public IP's checks
 - [x] Add possibility to change more than one A record
 - [x] Check ENV validity in entrypoint.sh
-- [ ] Add possibility to log changes via mail
+- [x] Add possibility to log changes via mail
 - [ ] Easy standalone script that can run without a container

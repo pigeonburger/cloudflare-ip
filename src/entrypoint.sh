@@ -49,6 +49,20 @@ main() {
         exit 1
     fi
 
+    IS_SEND_ADD_NULL = expr "$SENDER_ADDRESS" : '' >/dev/null
+    IS_SEND_PSW_NULL = expr "$SENDER_PASSWORD" : '' >/dev/null
+    IS_RECE_ADD_NULL = expr "$RECEIVER_ADDRESS" : '' >/dev/null
+    
+    if (( ! IS_SEND_ADD_NULL && ! IS_SEND_PSW_NULL && ! IS_RECE_ADD_NULL ) || ( IS_SEND_ADD_NULL && IS_SEND_PSW_NULL && IS_RECE_ADD_NULL )); then
+        if [ IS_SEND_ADD_NULL ]; then
+            echo "[INFO] - SENDER_ADDRESS null, will not send email"
+        fi
+        echo "[INFO] - SENDER_ADDRESS, SENDER_PASSWORD and RECEIVER_ADDRESS ok"
+    else
+        echo "[ERROR] - SENDER_ADDRESS, SENDER_PASSWORD and RECEIVER_ADDRESS must be all set to turn on email notification"
+        exit 1
+    fi
+
     echo ""
     echo "[INFO] - Everything ok!"
     echo ""
